@@ -3,6 +3,8 @@ require "sinatra/base"
 require "sinatra/activerecord"
 require "./models/task.rb"
 
+configure { set :server, :puma }
+
 class App < Sinatra::Base
   get '/' do
     tasks = Task.all.order(created_at: :desc)

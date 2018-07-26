@@ -1,0 +1,24 @@
+[Unit]
+Description=Puma HTTP Server
+After=network.target
+
+[Service]
+# Foreground process (do not use --daemon in ExecStart or config.rb)
+Type=simple
+
+# Preferably configure a non-privileged user
+User=web
+Group=web
+
+# Specify the path to your puma application root
+WorkingDirectory=/home/web/ruby/game
+
+# The command to start Puma
+ExecStart=/home/web/.rvm/wrappers/ruby-2.5.1/bundle exec puma -C /home/web/ruby/game/config/puma.rb
+ExecStop=/home/web/.rvm/wrappers/ruby-2.5.1/bundle exec pumactl -S /home/web/ruby/game/shared/pids/puma.state stop
+
+TimeoutSec=15
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
