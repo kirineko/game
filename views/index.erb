@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>女装扑克牌挑战</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <!-- 引入YDUI样式 -->
+    <link rel="stylesheet" href="demo.css" />
+    <link rel="stylesheet" href="build/css/ydui.css" />
+    <!-- 引入YDUI自适应解决方案类库 -->
+    <script src="build/js/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <section class="g-flexview">
+
+        <header class="m-navbar">
+            <a href="#" class="navbar-item"><i class="back-ico"></i></a>
+            <div class="navbar-center"><span class="navbar-title">女装扑克牌挑战</span></div>
+        </header>
+
+        <div class="m-celltitle">抽牌区域</div>
+        <div class="m-cell">
+            <div class="cell-item">
+                <div class="cell-left">抽牌：</div>
+                <div class="cell-right">
+                    <a class="btn btn-primary" onclick="gettask()">点击抽牌</a>
+                </div>
+            </div>
+            <div class="cell-item">
+                <div class="cell-left">完成任务个数:</div>
+                <div class="cell-right">
+                    <span id="maxid"><%= maxid %></span>
+                    /
+                    <span>10</span>
+                </div>
+            </div>
+            <div class="cell-item">
+                <div class="cell-left">清空：</div>
+                <div class="cell-right">
+                    <a class="btn btn-warning" onclick="cleartask()">点击清空</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="g-scrollview">
+            <div class="m-celltitle">抽牌结果区域</div>
+            <% tasks.each do |task| %>
+            <div class="m-cell">
+                <div class="cell-item">
+                    <div class="cell-left">当前任务编号:</div>
+                    <div class="cell-right"><%= task.task_id %></div>
+                </div>
+                <div class="cell-item">
+                    <div class="cell-left">
+                        花色:
+                    </div>
+                    <div class="cell-right">
+                        <b><%= task.color %></b>
+                    </div>
+                </div>
+                <div class="cell-item">
+                    <div class="cell-left">
+                        点数:
+                    </div>
+                    <div class="cell-right">
+                        <b><%= task.point %></b>
+                    </div>
+                </div>
+                <div class="cell-item">
+                    <div class="cell-left">
+                        任务:
+                    </div>
+                    <div class="cell-right">
+                        <b><%= task.content %></b>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        </div>
+
+    </section>
+    
+    <script src="jquery.min.js"></script>
+    <script src="build/js/ydui.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
