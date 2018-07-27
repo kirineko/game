@@ -47,12 +47,45 @@
             </div>
         </div>
 
+        <div class="m-celltitle">当前任务</div>
+        
+        <div class="m-cell">
+            <div class="cell-item">
+                <div class="cell-left">任务编号:</div>
+                <div class="cell-right">等待抽取</div>
+            </div>
+            <div class="cell-item">
+                <div class="cell-left">
+                    花色:
+                </div>
+                <div class="cell-right">
+                    <b>待定</b>
+                </div>
+            </div>
+            <div class="cell-item">
+                <div class="cell-left">
+                    点数:
+                </div>
+                <div class="cell-right">
+                    <b>待定</b>
+                </div>
+            </div>
+            <div class="cell-item">
+                <div class="cell-left">
+                    任务:
+                </div>
+                <div class="cell-right">
+                    <b>待定</b>
+                </div>
+            </div>
+        </div>
+
         <div class="g-scrollview">
-            <div class="m-celltitle">抽牌结果区域</div>
+            <div class="m-celltitle">历史任务</div>
             <% tasks.each do |task| %>
             <div class="m-cell">
                 <div class="cell-item">
-                    <div class="cell-left">当前任务编号:</div>
+                    <div class="cell-left">任务编号:</div>
                     <div class="cell-right"><%= task.task_id %></div>
                 </div>
                 <div class="cell-item">
