@@ -1,4 +1,4 @@
-function gettask() {
+$(document).on("click", "#task-get", function () {
     $.get('/task', function (data) {
         let ctask = data['data'];
         let code = data['code'];
@@ -39,10 +39,9 @@ function gettask() {
             )
         ))
     });
-}
+})
 
-
-function cleartask() {
+$(document).on("click", "#task-clear", function () {
     $.get('/clear', function (data) {
         let code = data['code'];
         if (code == 0) {
@@ -56,4 +55,4 @@ function cleartask() {
             })
         }
     });
-}
+})
