@@ -1,8 +1,9 @@
 # Change to match your CPU core count
+environment ENV.fetch("RACK_ENV") { "production" }
 workers ENV.fetch("PUMA_WORKERS") { 1 }
 
 # Min and Max threads per worker
-threads ENV.fetch("PUMA_MIN_THREADS") { 1 }, ENV.fetch("PUMA_MAX_THREADS") { 10 }
+threads ENV.fetch("PUMA_MIN_THREADS") { 1 }, ENV.fetch("PUMA_MAX_THREADS") { 15 }
 
 app_dir = File.expand_path("../..", __FILE__)
 shared_dir = "#{app_dir}/shared"
