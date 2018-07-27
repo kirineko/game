@@ -17,25 +17,25 @@ $(document).on("click", "#task-get", function () {
         tab.prepend($('<div class="m-cell">').append(
             $('<div class="cell-item">').append(
                 $('<div class="cell-left">').html("任务编号:"),
-                $('<div class="cell-right">').html(ctask.task_id),
+                $('<div class="cell-right">').html(ctask.task_id)
             ),
             $('<div class="cell-item">').append(
                 $('<div class="cell-left">').html("花色:"),
                 $('<div class="cell-right">').append(
                     $('<b>').html(ctask.color)
-                ),
+                )
             ),
             $('<div class="cell-item">').append(
                 $('<div class="cell-left">').html("点数:"),
                 $('<div class="cell-right">').append(
                     $('<b>').html(ctask.point)
-                ),
+                )
             ),
             $('<div class="cell-item">').append(
                 $('<div class="cell-left">').html("任务:"),
                 $('<div class="cell-right">').append(
                     $('<b>').html(ctask.content)
-                ),
+                )
             )
         ))
     });
