@@ -23,97 +23,140 @@
             <div class="navbar-center"><span class="navbar-title">女装扑克牌挑战</span></div>
         </header>
 
-        <div class="m-celltitle">抽牌区域</div>
-        <div class="m-cell">
-            <div class="cell-item">
-                <div class="cell-left">抽牌：</div>
-                <div class="cell-right">
-                    <a class="btn btn-primary" onclick="gettask()">点击抽牌</a>
-                </div>
-            </div>
-            <div class="cell-item">
-                <div class="cell-left">完成任务个数:</div>
-                <div class="cell-right">
-                    <span id="maxid"><%= maxid %></span>
-                    /
-                    <span>10</span>
-                </div>
-            </div>
-            <div class="cell-item">
-                <div class="cell-left">清空：</div>
-                <div class="cell-right">
-                    <a class="btn btn-warning" onclick="cleartask()">点击清空</a>
-                </div>
-            </div>
-        </div>
+        <div class="m-tab" data-ydui-tab><!-- 这里添加data-ydui-tab就可以啦 -->
+            <ul class="tab-nav">
+                <li class="tab-nav-item tab-active"><a href="javascript:;">抽取任务</a></li>
+                <li class="tab-nav-item"><a href="javascript:;">所有任务</a></li>
+                <li class="tab-nav-item"><a href="javascript:;">任务说明</a></li>
+            </ul>
+            <div class="tab-panel">
+                <div class="tab-panel-item tab-active">
+                    <div class="m-celltitle">抽牌区域</div>
+                    <div class="m-cell">
+                        <div class="cell-item">
+                            <div class="cell-left">抽牌：</div>
+                            <div class="cell-right">
+                                <a class="btn btn-primary" onclick="gettask()">点击抽牌</a>
+                            </div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-left">完成任务个数:</div>
+                            <div class="cell-right">
+                                <span id="maxid"><%= maxid %></span>
+                            </div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-left">清空：</div>
+                            <div class="cell-right">
+                                <a class="btn btn-warning" onclick="cleartask()">点击清空</a>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="m-celltitle">当前任务</div>
-        
-        <div class="m-cell">
-            <div class="cell-item">
-                <div class="cell-left">任务编号:</div>
-                <div class="cell-right">等待抽取</div>
-            </div>
-            <div class="cell-item">
-                <div class="cell-left">
-                    花色:
+                    <div class="m-celltitle">当前任务</div>
+                    
+                    <div class="m-cell" id="ctask">
+                        <div class="cell-item">
+                            <div class="cell-left">
+                                任务编号:
+                            </div>
+                            <div class="cell-right">
+                                <b><%= ctask.task_id %></b>
+                            </div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-left">
+                                花色:
+                            </div>
+                            <div class="cell-right">
+                                <b><%= ctask.color %></b>
+                            </div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-left">
+                                点数:
+                            </div>
+                            <div class="cell-right">
+                                <b><%= ctask.point %></b>
+                            </div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-left">
+                                任务:
+                            </div>
+                            <div class="cell-right">
+                                <b><%= ctask.content %></b>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="cell-right">
-                    <b>待定</b>
-                </div>
-            </div>
-            <div class="cell-item">
-                <div class="cell-left">
-                    点数:
-                </div>
-                <div class="cell-right">
-                    <b>待定</b>
-                </div>
-            </div>
-            <div class="cell-item">
-                <div class="cell-left">
-                    任务:
-                </div>
-                <div class="cell-right">
-                    <b>待定</b>
-                </div>
-            </div>
-        </div>
 
-        <div class="g-scrollview">
-            <div class="m-celltitle">历史任务</div>
-            <% tasks.each do |task| %>
-            <div class="m-cell">
-                <div class="cell-item">
-                    <div class="cell-left">任务编号:</div>
-                    <div class="cell-right"><%= task.task_id %></div>
+                <div class="tab-panel-item">
+                    <div class="g-scrollview">
+                        <div class="m-celltitle">所有任务</div>
+                        <div id="history">
+                            <% tasks.each do |task| %>
+                            <div class="m-cell">
+                                <div class="cell-item">
+                                    <div class="cell-left">任务编号:</div>
+                                    <div class="cell-right"><%= task.task_id %></div>
+                                </div>
+                                <div class="cell-item">
+                                    <div class="cell-left">
+                                        花色:
+                                    </div>
+                                    <div class="cell-right">
+                                        <b><%= task.color %></b>
+                                    </div>
+                                </div>
+                                <div class="cell-item">
+                                    <div class="cell-left">
+                                        点数:
+                                    </div>
+                                    <div class="cell-right">
+                                        <b><%= task.point %></b>
+                                    </div>
+                                </div>
+                                <div class="cell-item">
+                                    <div class="cell-left">
+                                        任务:
+                                    </div>
+                                    <div class="cell-right">
+                                        <b><%= task.content %></b>
+                                    </div>
+                                </div>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
                 </div>
-                <div class="cell-item">
-                    <div class="cell-left">
-                        花色:
-                    </div>
-                    <div class="cell-right">
-                        <b><%= task.color %></b>
-                    </div>
-                </div>
-                <div class="cell-item">
-                    <div class="cell-left">
-                        点数:
-                    </div>
-                    <div class="cell-right">
-                        <b><%= task.point %></b>
-                    </div>
-                </div>
-                <div class="cell-item">
-                    <div class="cell-left">
-                        任务:
-                    </div>
-                    <div class="cell-right">
-                        <b><%= task.content %></b>
+                <div class="tab-panel-item">
+                    <div class="m-celltitle">任务说明</div>
+                    
+                    <div class="m-cell">
+                        <div class="cell-item">
+                            <img src="img/task.jpg" height="100%" width="100%">
+                        </div>
+
+                        <div class="cell-item">
+                            <div class="cell-left">
+                                红色规则修订:
+                            </div>
+                            <div class="cell-right">
+                                <b>1分钟改为5次</b>
+                            </div>
+                        </div>
+                        <div class="cell-item">
+                            <div class="cell-left">
+                                黑色规则修订:
+                            </div>
+                            <div class="cell-right">
+                                <b>1分钟改为10次</b>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <% end %>
         </div>
 
     </section>

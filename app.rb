@@ -6,16 +6,33 @@ require "./models/task.rb"
 configure { set :server, :puma }
 
 class App < Sinatra::Base
+
+  @@points = (0...52).to_a
+
   get '/' do
-    tasks = Task.all.order(created_at: :desc)
-    maxid = tasks.length
-    erb :index, :locals => {:maxid => maxid, :tasks => tasks}
+    tasks = Task.all.order(task_id: :desc)
+    tasklen = tasks.length
+    if tasklen == 0
+      ctask = Task.new do |t|
+        t.task_id, t.color, t.point, t.content = 0,'待定',0,'待定' 
+      end
+    else
+      ctask = tasks.first
+    end
+    maxid = ctask.task_id
+    erb :index, :locals => {:maxid => maxid, :tasks => tasks, :ctask => ctask}
   end
 
   get "/task" do
     id = Task.maximum('task_id')
     task_id = id.to_i + 1
     color, point, content = random_task()
+
+    if !color
+      content_type :json
+      return json_response(-1, {}, '')
+      halt
+    end
 
     task = Task.new do |t|
       t.task_id = task_id
@@ -24,12 +41,21 @@ class App < Sinatra::Base
 
     task.save
 
-    redirect to('/')
+    data = {
+      task_id: task_id,
+      color: color,
+      point: point,
+      content: content
+    }
+    content_type :json
+    succ_response(data, '分配任务成功')
   end
 
   get "/clear" do
-    Task.destroy_all
-    redirect to('/')
+    Task.delete_all
+    @@points = (0...52).to_a
+    content_type :json
+    succ_response('清除成功')
   end
 
   post "/finish" do
@@ -43,8 +69,14 @@ class App < Sinatra::Base
 
   def random_task()
     colors = ['红桃','方块','黑桃','梅花']
-    ponits = (1..13).to_a
-    color, point = colors.sample, ponits.sample
+    points = (1..13).to_a
+    alloc = @@points.sample
+    if !alloc 
+      return nil,nil,nil
+    end
+    @@points.delete(alloc)
+    cindex, pindex = alloc.divmod(13)
+    color, point = colors[cindex], points[pindex]
     content = get_task_content(color, point)
     return color, point, content
   end
