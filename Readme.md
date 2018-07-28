@@ -130,10 +130,12 @@ puma
 
 ### 5.3 在项目中建立对应的目录
 
+```bash
 mkdir shared
 mkdir shared/sockets
 mkdir shared/pids
 mkdir log
+```
 
 ### 5.4 启动应用服务器
 
