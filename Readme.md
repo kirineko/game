@@ -2,7 +2,7 @@
 
 一个随机抽奖并实时向各端同步推送结果的♂轮盘游戏✨
 
-体验地址: ![点我体验游戏](http://118.25.177.136/)
+体验地址: [点我体验游戏](http://118.25.177.136/)
 
 **(已支持数据实时更新)**
 
@@ -45,7 +45,7 @@
 
 ### 4.1. 安装RVM和RUBY
 
-参考链接: ![安装RUBY环境](https://ruby-china.org/wiki/deploy-rails-on-ubuntu-server)
+参考链接: [安装RUBY环境](https://ruby-china.org/wiki/deploy-rails-on-ubuntu-server)
 
 ### 4.2. 安装和配置MySQL
 
