@@ -17,9 +17,9 @@
 
 ### 3.1 代码分支
 
-- master分支：基于websocket分支合并,本文档以websocket分支为标准介绍
-- websocket分支：基于websocket实现数据实时发送
-- ajax分支：基于ajax实现异步数据请求，但不保证各端**`实时性`**，需要主动刷新页面
+- **master**分支：基于websocket分支合并,本文档以websocket分支为标准介绍
+- **websocket**分支：基于websocket实现数据实时发送
+- **ajax**分支：基于ajax实现异步数据请求，但不保证各端**实时性**，需要主动刷新页面
 
 ### 3.2 目录结构
 
@@ -119,10 +119,10 @@ puma
 
 ### 5.1 生成环境说明
 
-- web服务器: `nginx`
-- 应用服务器: `puma`
-- websocket服务器: `puma`
-- DB服务器: `MySQL`
+- web服务器: **`nginx`**
+- 应用服务器: **`puma`**
+- websocket服务器: **`puma`**
+- DB服务器: **`MySQL`**
 
 ### 5.2 编写相关配置文件
 
@@ -174,7 +174,7 @@ sudo service nginx restart
 2. 基于sinatra + ajax的前后端(基本)分离web项目
 3. 基于sinatra + websocket的实时web项目
 
-感谢**`0x8023`、`MoeHero`、`Thinking`**指出了本项目过程中存在的问题，并提出了宝贵的改进意见，没有这些意见，本项目还是一个基于erb不断请求后台的超传统web项目。
+感谢**0x8023**、**MoeHero**、**Thinking**指出了本项目过程中存在的问题，并提出了宝贵的改进意见，没有这些意见，本项目还是一个基于erb不断请求后台的超传统web项目。
 
 ## 7. TODO List
 
