@@ -19,27 +19,27 @@
 
 - master分支：基于websocket分支合并,本文档以websocket分支为标准介绍
 - websocket分支：基于websocket实现数据实时发送
-- ajax分支：基于ajax实现异步数据请求，但不保证各端`实时性`，需要主动刷新页面
+- ajax分支：基于ajax实现异步数据请求，但不保证各端**`实时性`**，需要主动刷新页面
 
 ### 3.2 目录结构
 
-- `config`: 存放一些配置文件
-- `db`: 数据库迁移文件
-- `model`: 模型，采用Active Record实现ORM
-- `public`: 公有资源文件, 包含ydui框架资源、图片资源、jquery、websocket客户端js等, 其中`main.js`是需要关注的前端JS代码逻辑文件
-- `view`: 视图文件, 就一个`index.erb`, 就是一个html文件，但为了偷懒少写JS，在首次加载页面时用模板绑定了一些数据，导致不是纯粹的html, 可优化
-- `app.rb`: http后端，就是首页加载时绑定的那些数据
-- `chat.rb`: websocket后端，`speak`方法实现抽牌, `clear`方法实现清空数据，结果都向ws前端进行广播
-- `config.ru`: 工程启动文件，把app和chat打包为一个APP
-- `Gemfile`: 依赖的第三方gem包，主要是sinatra框架、Active Record库、litecable库、puma库
-- `Rakefile`: 脚手架文件，可以使用Rack进行模型迁移，如建立数据库，迁移模型等
+- **`config`**: 存放一些配置文件
+- **`db`**: 数据库迁移文件
+- **`model`**: 模型，采用Active Record实现ORM
+- **`public`**: 公有资源文件, 包含ydui框架资源、图片资源、jquery、websocket客户端js等, 其中`main.js`是需要关注的前端JS代码逻辑文件
+- **`view`**: 视图文件, 就一个`index.erb`, 就是一个html文件，但为了偷懒少写JS，在首次加载页面时用模板绑定了一些数据，导致不是纯粹的html, 可优化
+- **`app.rb`**: http后端，就是首页加载时绑定的那些数据
+- **`chat.rb`**: websocket后端，`speak`方法实现抽牌, `clear`方法实现清空数据，结果都向ws前端进行广播
+- **`config.ru`**: 工程启动文件，把app和chat打包为一个APP
+- **`Gemfile`**: 依赖的第三方gem包，主要是sinatra框架、Active Record库、litecable库、puma库
+- **`Rakefile`**: 脚手架文件，可以使用Rack进行模型迁移，如建立数据库，迁移模型等
 
 ### 3.3 框架介绍
 
-1. `Sinatra`: 超轻量级WEB框架
-2. `Lite Cable`: 基于`Pub/Sub`的websocket库
-3. `Active Record`: 大名鼎鼎的ORM
-4. `YDUI`: 一只注重审美，且性能高效的移动端&微信UI
+1. **`Sinatra`**: 超轻量级WEB框架
+2. **`Lite Cable`**: 基于`Pub/Sub`的websocket库
+3. **`Active Record`**: 大名鼎鼎的ORM
+4. **`YDUI`**: 一只注重审美，且性能高效的移动端&微信UI
 
 ## 4. 开发环境和项目配置
 
@@ -65,7 +65,7 @@ bundle exec rake db:create_migration NAME=create_posts
 
 ### 4.5.编写生成的数据迁移文件和模型文件
 
-语法需要参考`ActiceRecord`数据迁移部分
+语法需要参考`ActiceRecord`[数据迁移](https://ruby-china.github.io/rails-guides/active_record_migrations.html)部分
 
 **数据迁移文件**
 
@@ -174,7 +174,7 @@ sudo service nginx restart
 2. 基于sinatra + ajax的前后端(基本)分离web项目
 3. 基于sinatra + websocket的实时web项目
 
-感谢`0x8023`、`MoeHero`、`Thinking`指出了本项目过程中存在的问题，并提出了宝贵的改进意见，没有这些意见，本项目还是一个基于erb不断请求后台的超传统web项目。
+感谢**`0x8023`、`MoeHero`、`Thinking`**指出了本项目过程中存在的问题，并提出了宝贵的改进意见，没有这些意见，本项目还是一个基于erb不断请求后台的超传统web项目。
 
 ## 7. TODO List
 
